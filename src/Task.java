@@ -1,11 +1,12 @@
 import java.io.Serializable;
-//import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 
-public class Task implements Serializable {
+public class Task implements Serializable{
 
     private String description;
     private String title;
@@ -13,7 +14,7 @@ public class Task implements Serializable {
     private String isDone = "undone";
     private LocalDate date;
 
-    //public SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
 
 
     /*
@@ -84,6 +85,7 @@ public class Task implements Serializable {
         } while (!valid);
 
     }
+
 
 
     @Override

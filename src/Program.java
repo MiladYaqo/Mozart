@@ -17,6 +17,23 @@ public class Program {
     List<Task> container = new ArrayList<>();
 
 
+    public void editTask(){
+        System.out.println("Which task do you want to edit?");
+        for (Task tasks : container) {
+            System.out.println(container.indexOf(tasks)+1 + "." + tasks.getTitle());
+        }
+
+
+
+        String choice = input.nextLine();
+        switch (choice)
+            
+
+
+    }
+
+
+
     public void run() {
 
         //Printing welcome and initializing (command) as empty so the while loop works.
@@ -107,11 +124,7 @@ public class Program {
                     break;
 
                 case "3":
-                    System.out.println("Which task do you want to edit?");
-                    for (Task tasks : container) {
-                        System.out.println(container.indexOf(tasks)+1 + "." + tasks.getTitle());
-                    }
-                    break;
+
 
 
             }
