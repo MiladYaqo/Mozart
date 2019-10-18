@@ -1,8 +1,6 @@
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -16,10 +14,13 @@ public class Task implements Serializable{
 
 
 
-
-    /*
     public Task() {
-    }*/
+
+    }
+
+    public Task(String name) {
+        title = name;
+    }
 
 
     public String getDescription() {
@@ -87,15 +88,17 @@ public class Task implements Serializable{
     }
 
 
+    //public int editTask(){ }
+
 
     @Override
     public String toString()
     {
         return
-               "Title: " + title                + "\n" +
-               "Description: " + description    + "\n" +
-               "Project Title: " + project      + "\n" +
-               "Due date: " + date              + "\n" +
-               "Status: " + isDone              + "\n";
+               "Title: " + title                + " | " +
+               "Status: " + isDone              + "\n"  +
+               "Description: " + description    + "\n"  +
+               "Project Title: " + project      + "\n"  +
+               "Due date: " + date              ;
     }
 }

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Text{
 
         public void printWelcome() {
@@ -8,7 +11,7 @@ public class Text{
 
         }
         public void printOptions() {
-            System.out.println("Pic an option:\n");
+            System.out.println("Pic an option:e 3");
             System.out.println("(1) Show tasks");
             System.out.println("(2) Add a task");
             System.out.println("(3) Edit a task");
@@ -16,7 +19,5 @@ public class Text{
             System.out.println("(5) quit");
             System.out.println();
         }
-
-
 
 }
