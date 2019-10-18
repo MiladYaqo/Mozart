@@ -1,3 +1,5 @@
+package Todolist;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -86,9 +88,6 @@ public class Task implements Serializable{
         } while (!valid);
 
     }
-
-
-    //public int editTask(){ }
 
 
     @Override
