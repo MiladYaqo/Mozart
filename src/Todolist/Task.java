@@ -79,8 +79,6 @@ public class Task implements Serializable{
                 valid = true;
 
 
-                //date = sdf.parse(dateInput);
-
             } catch (java.time.format.DateTimeParseException e) {
                 System.out.println("You have typed invalid date!");
                 valid = false;

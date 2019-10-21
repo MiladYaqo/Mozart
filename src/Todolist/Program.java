@@ -5,33 +5,35 @@ import java.util.stream.Collectors;
 
 
 /**
- * Todolist.Program Class
+ * TodoList.Program Class
  * This is where everything happens, (switch) is used to implement user commands, the objects are initialised first.
  * The class takes a user input through the scanner and performs operations, the input is passed through the switch
- * statement that controls the which option to be executed.
+ * statement that controls which option to be executed.
  */
 
 
-public class Program {
-    Task task;
-    Text text = new Text();
-    Scanner input = new Scanner(System.in);
-    List<Task> container = new ArrayList<>();
+ class Program {
+    private Text text = new Text();
+    private Scanner input = new Scanner(System.in);
+    private static List<Task> container = new ArrayList<>();
 
-
-
-    public void editTask() {
-
+    /**
+     * getContainer
+     * A method that returns the "container" list.
+     * This method is used in TaskSetter class.
+     * @return container.
+     */
+    List getContainer() {
+        return container;
     }
 
+    /**
+     * run
+     * A method that performs the options which uses a do while loop
+     * to let the user stay inside the program until he presses 5 which is quit.
+     */
+    void run() {
 
-    public void run() {
-        container.add(
-                new Task("dsa")
-        );
-        container.add(
-                new Task("asd")
-        );
         //Printing welcome and initializing (command) as empty so the while loop works.
         text.printWelcome();
         String command;
@@ -44,146 +46,84 @@ public class Program {
             command = input.nextLine();
 
             switch (command) {
+                //Case one for option 1 which is for printing the existing tasks sorted or unsorted.
                 case "1":
+
                     if (container.isEmpty()) {
                         System.out.println("You have no tasks at the moment!\n");
                         break;
                     }
 
-                    System.out.println("Choose an option" +
-                            "\n 1. View all the tasks (unsorted)" +
-                            "\n 2. View tasks sorted by date" +
-                            "\n 3. View tasks sorted by project");
+                    text.sortOptions();
+
                     String option = input.nextLine();
-
-
+                    //An inside switch case to prompt the user for the type of sort he/she wants.
                     switch (option) {
+
                         case "1":
-                            System.out.println("Your tasks are: ");
-                            System.out.println("--------------------");
-                            container.forEach(x -> System.out.println("#" + (container.indexOf(x)+1) + "\n" + x +"\n"));
-                            System.out.println("--------------------\n");
+                            System.out.println("Your tasks are:" + "\n--------------------");
+                            container.forEach(x -> System.out.println("#" + (container.indexOf(x) + 1) + "\n" + x));
                             break;
 
                         case "2":
-                            System.out.println("Your tasks sorted by date are: ");
-                            System.out.println("--------------------");
+                            System.out.println("Your tasks sorted by date are:" + "\n--------------------");
                             container.stream()
                                     .sorted(Comparator.comparing(Task::getDate))
                                     .collect(Collectors.toList())
-                                    .forEach(x -> System.out.println("#" + (container.indexOf(x)+1) + "\n" + x +"\n"));
-                            System.out.println("-------------------- \n");
-
+                                    .forEach(x -> System.out.println("#" + (container.indexOf(x) + 1) + "\n" + x));
                             break;
 
                         case "3":
-                            System.out.println("Your tasks sorted by project title are: ");
-                            System.out.println("--------------------");
+                            System.out.println("Your tasks sorted by project title are:" + "\n--------------------");
                             container.stream()
                                     .sorted(Comparator.comparing(Task::getProject))
                                     .collect(Collectors.toList())
-                                    .forEach(x -> System.out.println("#" + (container.indexOf(x)+1) + "\n" + x +"\n"));
-                            System.out.println("--------------------\n");
+                                    .forEach(x -> System.out.println("#" + (container.indexOf(x) + 1) + "\n" + x));
+                            break;
+
                     }
+                    System.out.println("--------------------");
                     break;
 
+                //Case two for option 2 which is to add a task.
+                //It uses TaskSetter class to add a task.
                 case "2":
-
-
                     String answer;
                     do {
-                        task = new Task();
-                        System.out.println("Please enter your task description");
-                        task.setDescription(input.nextLine());
-
-                        System.out.println("Please enter a title for your task");
-                        task.setTitle(input.nextLine());
-
-                        System.out.println("Please enter a project title for your task");
-                        task.setProject(input.nextLine());
-
-                        System.out.println("Please enter the due date for your task \n" +
-                                "enter it as a \"day-month-year\" format (Case sensitive)");
-                        task.setDate(input.nextLine());
-
-                        container.add(task);
-
-
-                        System.out.println("Do you want to add more tasks?" +
-                                "\n Answer with Y/N");
+                        TaskSetter setter = new TaskSetter();
+                        setter.taskSetter();
                         answer = input.nextLine().toLowerCase();
-
 
                     } while (answer.equals("y"));
                     break;
 
+                //Case three for option 3 which is to change a task.
+                //It uses TaskSetter class to perform the changes in a task.
                 case "3":
 
-                    do{
+                    do {
+                        if (container.isEmpty()){
+                            System.out.println("You have no tasks at the moment!\n");
+                            break;
+                        }
+
                         System.out.println("Which task do you want to edit? \n");
                         for (Task t : container) {
-                            //ADD AN EXCEPTION FOR WHEN THE LIST IS EMPTY
                             System.out.println(container.indexOf(t) + 1 + "." + "\n" + t + "\n"); //Or t.getTitle()
                         }
 
+                        TaskSetter setter = new TaskSetter();
+                        setter.taskChanger();
 
-                        System.out.println("Please choose a task");
-                        String userInput = input.nextLine();
-                        int taskChoice = Integer.parseInt(userInput);
-
-                        Task t = container.get(taskChoice-1);
-                        if (t == null) {
-                            System.out.println("There is no task with the specified index");
-
-                        } else {
-
-                            System.out.println("what do you want to change in the task?" +
-                                    "\nChoose a number:" +
-                                    "\n 1.Title" +
-                                    "\n 2.Status" +
-                                    "\n 3.Description" +
-                                    "\n 4.Project name" +
-                                    "\n 5.Due Date");
-
-                            String editChoice = input.nextLine();
-                            switch (editChoice) {
-
-                                case "1":
-                                    System.out.println("Enter a new title");
-                                    t.setTitle(input.nextLine());
-                                    System.out.println(t.getTitle());
-                                    break;
-                                case "2":
-                                    System.out.println("Enter a status Done/Undone");
-                                    t.setDone(input.nextLine());
-                                    break;
-                                case "3":
-                                    System.out.println("Enter a new description");
-                                    t.setDescription(input.nextLine());
-                                    break;
-                                case "4":
-                                    System.out.println("Enter a new project name");
-                                    t.setDescription(input.nextLine());
-                                    break;
-                                case "5":
-                                    System.out.println("Enter a new due date: day/month/year");
-                                    t.setDate(input.nextLine());
-                                    break;
-
-
-                            }
-
-                        }
-
-                        System.out.println("Do you want to change another task?");
+                        System.out.println("Do you want to change another task? Y/N");
                         answer = input.nextLine();
-                    } while(answer.toLowerCase().equals("y"));
 
 
-
+                    } while (answer.toLowerCase().equals("y"));
 
 
             }
-        } while (!command.equals("5"));
+        }
+        while (!command.equals("5"));
     }
 }
