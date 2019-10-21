@@ -12,6 +12,7 @@ public class Text{
             //You have x tasks to do y tasks are done, System.out.println();
 
         }
+
         public void printOptions() {
             System.out.println("Pic an option:");
             System.out.println("(1) Show tasks");
@@ -20,7 +21,7 @@ public class Text{
             System.out.println("(4) Save");
             System.out.println("(5) quit");
         }
-
+        
         public void sortOptions(){
 
             System.out.println("Choose an option" +

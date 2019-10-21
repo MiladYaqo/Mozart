@@ -7,8 +7,6 @@ public class TaskSetter {
 
     private Scanner input = new Scanner(System.in);
     private Program pro = new Program();
-    //private List<Task> list2 = pro.getContainer();
-
 
 
     public void taskSetter() {
