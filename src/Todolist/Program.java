@@ -1,5 +1,6 @@
 package Todolist;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,46 @@ import java.util.stream.Collectors;
     private Text text = new Text();
     private Scanner input = new Scanner(System.in);
     private static List<Task> container = new ArrayList<>();
+    private File file = new File("Tasks.txt");
+
+
+    Program (){
+    }
+
+    void readFromFile(){
+
+        try {
+            FileInputStream fi = new FileInputStream(file);
+            ObjectInputStream oInput = new ObjectInputStream(fi);
+            try {
+                while (true) {
+
+                    Task t = (Task)oInput.readObject();
+                    container.add(t);
+                }
+            } catch (EOFException | ClassNotFoundException | FileNotFoundException ex){ex.printStackTrace();}
+        } catch (IOException e){e.printStackTrace();}
+
+    }
+
+    void writerToFile(){
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream output = new ObjectOutputStream(fos);
+
+            for (Task t: container){
+                output.writeObject(t);
+            }
+            fos.close();
+            output.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
     /**
      * getContainer
@@ -118,9 +159,13 @@ import java.util.stream.Collectors;
                         System.out.println("Do you want to change another task? Y/N");
                         answer = input.nextLine();
 
-
                     } while (answer.toLowerCase().equals("y"));
+                    break;
 
+                case "4":
+                    writerToFile();
+                    System.out.println("Tasks successfully saved");
+                    break;
 
             }
         }

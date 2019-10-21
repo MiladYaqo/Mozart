@@ -16,14 +16,9 @@ public class Task implements Serializable{
 
 
 
-    public Task() {
+     Task() {
 
     }
-
-    public Task(String name) {
-        title = name;
-    }
-
 
     public String getDescription() {
         return description;

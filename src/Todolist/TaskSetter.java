@@ -5,14 +5,16 @@ import java.util.Scanner;
 
 public class TaskSetter {
 
-    private Program pro = new Program();
     private Scanner input = new Scanner(System.in);
-    private List<Task> list2 = pro.getContainer();
+    private Program pro = new Program();
+    //private List<Task> list2 = pro.getContainer();
 
 
 
     public void taskSetter() {
         Task task = new Task();
+        List<Task> list2 = pro.getContainer();
+
         System.out.println("Please enter your task description");
         task.setDescription(input.nextLine());
 
@@ -26,7 +28,7 @@ public class TaskSetter {
                 "only \"day-month-year\" format is allowed");
         task.setDate(input.nextLine());
 
-        pro.getContainer().add(task);
+        list2.add(task);
 
 
         System.out.println("Do you want to add more tasks?" +
@@ -35,6 +37,8 @@ public class TaskSetter {
     }
 
     public void taskChanger(){
+        List<Task> list2 = pro.getContainer();
+
         System.out.println("Please choose a task");
         String userInput = input.nextLine();
         int taskChoice = Integer.parseInt(userInput);
