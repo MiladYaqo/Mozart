@@ -3,12 +3,22 @@ package Todolist;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * TodoList.TaskSetter class.
+ * A class that sets a task or changes its informations.
+ *
+ * @author MiladYaqo
+ */
 public class TaskSetter {
 
     private Scanner input = new Scanner(System.in);
     private Program pro = new Program();
 
-
+    /**
+     * A method that creates a new task object assigns information to its fields
+     * and saves them to the ArrayList that is in class Program by getting that array
+     * from that class.
+     */
     public void taskSetter() {
         Task task = new Task();
         List<Task> list2 = pro.getContainer();
@@ -34,6 +44,12 @@ public class TaskSetter {
 
     }
 
+    /**
+     * A method that changes an already created task
+     * It prints out the existing tasks and asks the user to choose one of these
+     * tasks, each task has a number the user types the number of desired task.
+     * Then the methods lets the user choose what to change about that task and changes it.
+     */
     public void taskChanger(){
         List<Task> list2 = pro.getContainer();
 

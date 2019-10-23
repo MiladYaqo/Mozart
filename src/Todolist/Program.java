@@ -6,23 +6,29 @@ import java.util.stream.Collectors;
 
 
 /**
- * TodoList.Program Class
+ * TodoList.Program class.
  * This is where everything happens, (switch) is used to implement user commands, the objects are initialised first.
  * The class takes a user input through the scanner and performs operations, the input is passed through the switch
  * statement that controls which option to be executed.
+ *
+ * @author MiladYaqo
  */
 
 
- class Program {
+ public class Program {
     private Text text = new Text();
     private Scanner input = new Scanner(System.in);
     private static List<Task> container = new ArrayList<>();
     private File file = new File("Tasks.txt");
 
 
-    Program (){
+    public Program (){
     }
 
+    /**
+     * ReadFromAFile method which reads from a file that is already saved
+     *
+     */
     void readFromFile(){
 
         try {
@@ -39,6 +45,10 @@ import java.util.stream.Collectors;
 
     }
 
+    /**
+     * WriteToFile
+     * A method that writes the created tasks into a file
+     */
     void writerToFile(){
         try {
             FileOutputStream fos = new FileOutputStream(file);

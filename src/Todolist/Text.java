@@ -3,6 +3,11 @@ package Todolist;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TodoList.Text class.
+ * A class that prints out texts.
+ * The class is created for shortening the methods.
+ */
 public class Text{
 
         public void printWelcome() {
@@ -21,7 +26,7 @@ public class Text{
             System.out.println("(4) Save");
             System.out.println("(5) quit");
         }
-        
+
         public void sortOptions(){
 
             System.out.println("Choose an option" +

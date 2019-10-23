@@ -5,7 +5,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-
+/**
+ * TodoList.Task class.
+ * A class which is responsible for storing task values and informations.
+ * The class has different methods to set and get the value of fields which are specified below.
+ *
+ * @author MiladYaqo
+ */
 public class Task implements Serializable{
 
     private String description;
@@ -16,7 +22,7 @@ public class Task implements Serializable{
 
 
 
-     Task() {
+     public Task() {
 
     }
 
@@ -55,7 +61,15 @@ public class Task implements Serializable{
     public LocalDate getDate() {
         return date;
     }
+    public String getDateAsString(){
+         return date.toString();
+    }
 
+    /**
+     * A method that is responsible for taking a date from the user as string and parsing
+     * that string into a LocalDate type.
+     * @param dateInput which is a typed date from the user.
+     */
     public void setDate(String dateInput) {
         boolean valid=true;
         do {
