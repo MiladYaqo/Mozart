@@ -9,14 +9,12 @@ import java.util.List;
  * The class is created for shortening the methods.
  */
 public class Text{
-    String taskCount;
-        public void printWelcome() {
-            System.out.println();
+     public void printWelcome() {
+         System.out.println();
             System.out.println("Welcome to Accomplish!" +
-                    //"You have" + Program.getContainer().stream().forEach(x -> )
+                    "\nUnfinished tasks: " + (Program.getContainer().size()-Program.tasksThatAreDone()) +
+                    "\nFinished tasks: " + Program.tasksThatAreDone() +
                     "\nWhat do you want to do?");
-            //You have x tasks to do y tasks are done, System.out.println();
-
         }
 
         public void printOptions() {
@@ -34,7 +32,6 @@ public class Text{
                     "\n 1. View all the tasks" +
                     "\n 2. View tasks sorted by date" +
                     "\n 3. View tasks sorted by project");
-
         }
 
 }
