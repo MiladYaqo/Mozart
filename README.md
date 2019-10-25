@@ -1,11 +1,11 @@
-##ReadMe & User manual 
+## ReadMe & User manual 
 
-###What is it?
+### What is it?
 
 A text-based application called Accomplish that is basically a todo-list manager that can create store and show task.
 A task can have different information about it, it has task name, project name, due date and status.
 
-####The application performs different actions:
+#### The application performs different actions:
 
  1. It can show the available tasks.
     * Show tasks unsorted
@@ -15,7 +15,7 @@ A task can have different information about it, it has task name, project name, 
  3. Enables the user to edit the task information.
  4. Saves the new created tasks into the computer.
  
- #User manual 
+ # User manual 
  
  The application works with user inputs it takes user input 
  and performs the corresponding choice, in the application 
