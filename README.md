@@ -15,7 +15,7 @@ A task can have different information about it, it has task name, project name, 
  3. Enables the user to edit the task information.
  4. Saves the new created tasks into the computer.
  
- #User manual
+ #User manual 
  
  The application works with user inputs it takes user input 
  and performs the corresponding choice, in the application 
