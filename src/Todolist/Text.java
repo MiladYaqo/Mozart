@@ -9,10 +9,11 @@ import java.util.List;
  * The class is created for shortening the methods.
  */
 public class Text{
-
+    String taskCount;
         public void printWelcome() {
             System.out.println();
             System.out.println("Welcome to Accomplish!" +
+                    //"You have" + Program.getContainer().stream().forEach(x -> )
                     "\nWhat do you want to do?");
             //You have x tasks to do y tasks are done, System.out.println();
 

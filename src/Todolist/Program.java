@@ -74,7 +74,7 @@ import java.util.stream.Collectors;
      * This method is used in TaskSetter class.
      * @return container.
      */
-    List getContainer() {
+    static List getContainer() {
         return container;
     }
 
