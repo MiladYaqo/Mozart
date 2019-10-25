@@ -58,63 +58,63 @@ public class TaskSetter {
         int taskChoice = Integer.parseInt(userInput);
 
 
+        if (taskChoice > Program.getContainer().size()) {
+            System.out.println("There is no task with the specified index");
+        } else {
+            Task t = list2.get(taskChoice - 1);
+            System.out.println("what do you want to change in the task?" +
+                    "\nChoose a number:" +
+                    "\n 1.Title" +
+                    "\n 2.Status" +
+                    "\n 3.Description" +
+                    "\n 4.Project name" +
+                    "\n 5.Due Date" +
+                    "\n 6.Remove");
 
-            if (taskChoice > Program.getContainer().size()) {
-                System.out.println("There is no task with the specified index");
-            } else {
-                Task t = list2.get(taskChoice - 1);
-                System.out.println("what do you want to change in the task?" +
-                        "\nChoose a number:" +
-                        "\n 1.Title" +
-                        "\n 2.Status" +
-                        "\n 3.Description" +
-                        "\n 4.Project name" +
-                        "\n 5.Due Date" +
-                        "\n 6.Remove");
+            String editChoice = input.nextLine();
+            switch (editChoice) {
 
-                String editChoice = input.nextLine();
-                switch (editChoice) {
-
-                    case "1":
-                        System.out.println("Enter a new title");
-                        t.setTitle(input.nextLine());
-                        System.out.println(t.getTitle());
+                case "1":
+                    System.out.println("Enter a new title");
+                    t.setTitle(input.nextLine());
+                    System.out.println(t.getTitle());
+                    break;
+                case "2":
+                    System.out.println("Enter a status Done/Undone");
+                    t.setDone(input.nextLine());
+                    System.out.println(t.getDone());
+                    break;
+                case "3":
+                    System.out.println("Enter a new description");
+                    t.setDescription(input.nextLine());
+                    System.out.println(t.getDescription());
+                    break;
+                case "4":
+                    System.out.println("Enter a new project name");
+                    t.setProject(input.nextLine());
+                    System.out.println(t.getProject());
+                    break;
+                case "5":
+                    System.out.println("Enter a new due date: day/month/year");
+                    t.setDate(input.nextLine());
+                    System.out.println(t.getDate());
+                    break;
+                case "6":
+                    System.out.println("You're about to remove this task!\nAre you sure? Y/N");
+                    String answer = input.nextLine();
+                    if (answer.toLowerCase().equals("y")) {
+                        Program.getContainer().remove(t);
+                        System.out.println("Your task has been successfully removed!");
                         break;
-                    case "2":
-                        System.out.println("Enter a status Done/Undone");
-                        t.setDone(input.nextLine());
-                        System.out.println(t.getDone());
+                    }
+                    if (answer.toLowerCase().equals("n"))
                         break;
-                    case "3":
-                        System.out.println("Enter a new description");
-                        t.setDescription(input.nextLine());
-                        System.out.println(t.getDescription());
-                        break;
-                    case "4":
-                        System.out.println("Enter a new project name");
-                        t.setProject(input.nextLine());
-                        System.out.println(t.getProject());
-                        break;
-                    case "5":
-                        System.out.println("Enter a new due date: day/month/year");
-                        t.setDate(input.nextLine());
-                        System.out.println(t.getDate());
-                        break;
-                    case "6":
-                        System.out.println("You're about to remove this task!\nAre you sure? Y/N");
-                        String answer = input.nextLine();
-                        if (answer.toLowerCase().equals("y")) {
-                            Program.getContainer().remove(t);
-                            System.out.println("Your task has been successfully removed!");
-                            break;
-                        }
-                        if (answer.toLowerCase().equals("n"))
-                            break;
 
 
-                }
             }
+        }
 
 
     }
+
 }

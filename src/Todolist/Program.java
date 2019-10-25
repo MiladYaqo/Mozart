@@ -63,8 +63,6 @@ import java.util.stream.Collectors;
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
 
@@ -78,6 +76,15 @@ import java.util.stream.Collectors;
         return container;
     }
 
+    static int tasksThatAreDone() {
+        int taskDoneCount =0;
+        for (Task t: container){
+            if(t.getDone().toLowerCase().equals("done")) {
+                 taskDoneCount++;
+            }
+        }
+        return taskDoneCount;
+    }
     /**
      * run
      * A method that performs the options which uses a do while loop
