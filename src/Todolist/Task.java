@@ -1,9 +1,17 @@
+package Todolist;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-
+/**
+ * TodoList.Task class.
+ * A class which is responsible for storing task values and informations.
+ * The class has different methods to set and get the value of fields which are specified below.
+ *
+ * @author MiladYaqo
+ */
 public class Task implements Serializable{
 
     private String description;
@@ -14,14 +22,9 @@ public class Task implements Serializable{
 
 
 
-    public Task() {
+     public Task() {
 
     }
-
-    public Task(String name) {
-        title = name;
-    }
-
 
     public String getDescription() {
         return description;
@@ -58,7 +61,15 @@ public class Task implements Serializable{
     public LocalDate getDate() {
         return date;
     }
+    public String getDateAsString(){
+         return date.toString();
+    }
 
+    /**
+     * A method that is responsible for taking a date from the user as string and parsing
+     * that string into a LocalDate type.
+     * @param dateInput which is a typed date from the user.
+     */
     public void setDate(String dateInput) {
         boolean valid=true;
         do {
@@ -77,8 +88,6 @@ public class Task implements Serializable{
                 valid = true;
 
 
-                //date = sdf.parse(dateInput);
-
             } catch (java.time.format.DateTimeParseException e) {
                 System.out.println("You have typed invalid date!");
                 valid = false;
@@ -86,9 +95,6 @@ public class Task implements Serializable{
         } while (!valid);
 
     }
-
-
-    //public int editTask(){ }
 
 
     @Override

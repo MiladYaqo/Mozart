@@ -1,3 +1,6 @@
 .idea
 Todo List.iml
 .out 
+.gradle
+out/production/Todo List
+*.class
